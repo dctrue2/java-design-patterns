@@ -26,7 +26,7 @@ package com.iluwatar.application.controller;
 /**
  * The Site implementation of mapper.
  */
-public class SiteMapper extends Mapper {
+public class SiteMapper extends AbstractMapper {
 
   /**
    * Build the site by mapping keys to pages.

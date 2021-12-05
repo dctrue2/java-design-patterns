@@ -34,7 +34,7 @@ class AppTest {
     * Verify application can be started.
     */
   @Test
-  void shouldExecuteApplicationWithoutException() {
+  /* default */ void shouldExecuteApplicationWithoutException() {
     assertDoesNotThrow(() -> App.main(new String[]{}));
   }
 }

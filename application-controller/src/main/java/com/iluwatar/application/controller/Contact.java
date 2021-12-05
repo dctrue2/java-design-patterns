@@ -26,12 +26,13 @@ package com.iluwatar.application.controller;
 /**
  * The Target subtype Contact.
  */
-public class Contact extends Target {
+public class Contact extends AbstractTarget {
 
   /**
    * Instantiates a new Contact page.
    */
-  Contact() {
+  /* default */ Contact() {
+    super();
     title = "Contact Us";
     body = "President:\nJane Doe\n555-555-5555\njane@example.top-level-domain\n\n"
            + "Vice President:\nJohn Doe\n444-444-4444\njohn@example.top-level-domain";

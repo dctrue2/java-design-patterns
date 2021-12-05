@@ -26,12 +26,13 @@ package com.iluwatar.application.controller;
 /**
  * The Target subtype Home.
  */
-public class Home extends Target {
+public class Home extends AbstractTarget {
 
   /**
    * Instantiates a new Home page.
    */
-  Home() {
+  /* default */ Home() {
+    super();
     title = "Home";
     body = "Welcome to our site! I'm sure you are impressed by the aesthetics! "
             + "This page incorporates all of the essential elements that should "

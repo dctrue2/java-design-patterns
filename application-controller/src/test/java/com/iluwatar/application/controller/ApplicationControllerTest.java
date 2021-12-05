@@ -23,19 +23,20 @@
 
 
 package com.iluwatar.application.controller;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.fail;
-
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Verify basic functionality performs without issue.
+ */
 class ApplicationControllerTest {
 
     /**
      * Verify Application controller can be instantiated.
      */
     @Test
-    void shouldInstantiateControllerWithoutException() {
+    /* default */ void shouldInstantiateControllerWithoutException() {
         assertDoesNotThrow(() -> new ApplicationController());
     }
 
@@ -43,26 +44,26 @@ class ApplicationControllerTest {
      * Verify all defined pages can be reached.
      */
     @Test
-    void testExistingPages() {
-      ApplicationController controller = new ApplicationController();
-      controller.handler("H");
-      controller.handler("A");
-      controller.handler("C");
-      
-      try {
-        controller.handler("X");
-        fail("Did not throw NullPointerException");
-      } catch (NullPointerException e) {
-        assertDoesNotThrow(() -> Target.clearScreen());
-      } 
-  }
+    /* default */ void testExistingPages() throws Exception {
+        final ApplicationController controller = new ApplicationController();
+        controller.handler("H");
+        controller.handler("A");
+        controller.handler("C");
+        
+        try {
+          controller.handler("X");
+          fail("Did not throw NullPointerException");
+        } catch (NullPointerException e) {
+          assertDoesNotThrow(() -> AbstractTarget.clearScreen());
+        } 
+    }
 
   /**
    * Verify non-existent page throws null pointer exception.
    */
   @Test
-  void testInvalidPage() {
-      ApplicationController controller = new ApplicationController();
+  /* default */ void testInvalidPage() {
+      final ApplicationController controller = new ApplicationController();
       assertThrows(NullPointerException.class,() -> controller.handler("P"));
   }
 

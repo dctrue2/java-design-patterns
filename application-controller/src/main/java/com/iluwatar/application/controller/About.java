@@ -26,12 +26,13 @@ package com.iluwatar.application.controller;
 /**
  * The Target subtype About.
  */
-public class About extends Target {
+public class About extends AbstractTarget {
 
   /**
    * Instantiates a new About page.
    */
-  About() {
+  /* default */ About() {
+    super();
     title = "About Us";
     body = "Welcome to the About Us page! This page was created from a handful of developers. "
             + "We have taken the utmost care to ensure this site meets your expectations!\n\n"

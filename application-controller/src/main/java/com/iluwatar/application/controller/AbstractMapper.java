@@ -23,58 +23,39 @@
 
 package com.iluwatar.application.controller;
 
+import java.util.HashMap;
+
 /**
- * The Target to be invoked.
+ * The Mapper.
  */
-public abstract class Target {
+public abstract class AbstractMapper {
 
   /**
-   * The Body of the page.
+   * The Map.
    */
-  protected String body;
-  /**
-   * The Title of the page.
-   */
-  protected String title;
+  protected transient HashMap<String, AbstractTarget> map;
 
   /**
-   * Invoke the target and display the page with the appropriate text.
+   * Instantiates a new Mapper.
    */
-  public void invoke() {
-
-    final String divider = "-------------------------------------------------------------";
-
-    clearScreen();
-    //Print Title
-    print(divider);
-    print(title + " Page");
-    print(divider);
-     
-    //Print Body
-    print("");
-    print(body);
-    print("");
-
-    //Print Navigation
-    print(divider);
-    print("Enter one of the following letters to navigate the site:");
-    print("H (Home Page)  |  A (About Us)  |  C (Contact Us)  |  X (Exit)\n");
+  protected AbstractMapper() {
+    map = new HashMap<>();
+    build();
   }
 
   /**
-   * Display the input text in the console.
-   * @param text the text to be displayed
+   * Resolve target.
+   *
+   * @param key the key
+   * @return the target
    */
-  public static void print(String text) {
-    System.out.println(text);
+  public AbstractTarget resolve(final String key) {
+    return map.get(key);
   }
 
   /**
-   * Clear the screen.
+   * Build.
    */
-  public static void clearScreen() {
-    System.out.print("\033[H\033[2J");  
-    System.out.flush();  
-  }  
+  public abstract void build();
 
 }

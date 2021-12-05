@@ -28,22 +28,18 @@ package com.iluwatar.application.controller;
  */
 public class ApplicationController {
 
-  private SiteMapper mapper;
-
   /**
-   * Instantiates a new application controller.
+   * The Site implementation of mapper.
    */
-  public ApplicationController() {
-    mapper = new SiteMapper();
-  }
+  final private transient SiteMapper mapper = new SiteMapper();
 
   /**
    * Handler for incoming requests.
    *
    * @param key the key corresponding a particular target
    */
-  public void handler(String key) {
-    Target target = mapper.resolve(key);
+  public void handler(final String key) {
+    final AbstractTarget target = mapper.resolve(key);
     target.invoke();
   }
 }

@@ -42,13 +42,19 @@ import static java.lang.Thread.sleep;
 public class App {
 
   /**
+   * Duration to pause thread when simulating key presses.
+   *
+   */
+  final private static long PAUSE_DURATION = 3000;
+
+  /**
    * Program entry point.
    *
    * @param args command line arguments
    */
-  public static void main(String[] args) {
+  public static void main(final String[] args) {
 
-    ApplicationController controller = new ApplicationController();
+    final ApplicationController controller = new ApplicationController();
 
     try {
 
@@ -67,7 +73,7 @@ public class App {
       print("(User presses the {X} key)");
       controller.handler(sanitizeInput('x'));
     } catch (NullPointerException e) {
-      Target.clearScreen();
+      AbstractTarget.clearScreen();
     }
   }
 
@@ -77,7 +83,7 @@ public class App {
    * @param input keyboard key that was pressed
    * @return lowercase version of input character
    */
-  public static String sanitizeInput(char input) {
+  public static String sanitizeInput(final char input) {
     return Character.toString(Character.toUpperCase(input));
   }
 
@@ -85,7 +91,7 @@ public class App {
    * Display the input text in the console.
    * @param text the text to be displayed
    */
-  public static void print(String text) {
+  public static void print(final String text) {
     pause();
     System.out.println(text);
     pause();
@@ -96,10 +102,8 @@ public class App {
    *
    */
   public static void pause() {
-    final long duration = 3000;
-
     try {
-      sleep(duration);
+      sleep(PAUSE_DURATION);
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
     }
